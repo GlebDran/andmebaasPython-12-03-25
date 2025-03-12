@@ -94,3 +94,32 @@ users = execute_read_query(conn, select_users)
 
 for users in users:
     print(user)
+
+create_gender_tabel="""
+CREATE TABLE IF NOT EXISTS gender(
+Id INTEGER PRIMARY KEY AUTOINCREMENT,
+Nimetus TEXT NOT NULL)"""
+
+insert_gender="""
+INSERT INTO
+gender(Nimetus)
+VALUES
+('mees')
+('naine')
+"""
+create_users_table2="""
+CREATE TABLE IF NOT EXISTS users2(
+Id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT NOT NULL,
+Lname TEXT NOT NULL,
+Age INTEGER NOT NULL,
+GenderID INTEGER,
+FOREIGN KEY (GenderId) REFERENCES gender (Id)
+"""
+insert_users2="""
+INSERT INTO
+users2(Name,Lname,Age,GenderID)
+VALUES
+('Mati, 'Tamm', 50, 1),
+('Kati, 'Kask', 54, 2)"""
+
