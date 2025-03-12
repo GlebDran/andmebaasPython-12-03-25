@@ -5,7 +5,7 @@ def create_connectrion (path):
     connection = None
     try:
         connection = connect(path)
-        print("Ühendus on edukalt tehtud")
+        print("Ãœhendus on edukalt tehtud")
     except Error as e:
         print(f"Tekkis vig'{e}'")
     return connection
