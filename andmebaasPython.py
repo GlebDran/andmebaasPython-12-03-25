@@ -133,3 +133,22 @@ gender.Nimetus
 from users2
 INNER JOIN gender ON users2.GenderId=gender.Id
 """
+
+filename=path.abspath(__file__)
+dbdir=filename.rstrip('andmebaasPython.py')
+dppath=path.join(dbdir,"data.db")
+conn=create_connect(dbpath)
+execute_query(conn,create_gender_tabel)
+execute_query(conn,insert_users2)
+execute_query(conn,create_users_table2)
+execute_query(conn,insert_users2)
+execute_query(conn,select_users2_gender)
+execute_query(conn,insert_gender)
+
+print("Kasutajate tabel 1,2:")
+for user in users:
+    print(user)
+users_genders=execute_read_query(conn,select_users2_gender)
+print("Kasutajate tabel mees, naine:")
+for gender in users_genders:
+    print(gender)
