@@ -123,8 +123,9 @@ VALUES
 ('Mati, 'Tamm', 50, 1),
 ('Kati, 'Kask', 54, 2)"""
 
-select_users="SELECT * from users2"
-select_users_gender="""
+select_users2="SELECT * from users2"
+
+select_users2_gender="""
 SELECT
 users2.Name,
 users2.Lname,
