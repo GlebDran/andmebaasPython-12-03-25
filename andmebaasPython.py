@@ -62,7 +62,17 @@ def add_users_query(connection, user_data):
     query="INSERT INTO users(name,age,gender,nationality) VALUES("+user_data+")"
     execute_query(connection, query)
 
-insert_user="'"+input("Nimi: ")+"', '"+input("Vanus: ")
-+"', '"+input("Sugu: ")+"', '"+input("Riik: ")+"'"
+insert_user="'"+input("Nimi: ")+"','"+input("Vanus: ")+"','"+input("Sugu: ")+"','"+input("Riik:")+"'"
 
 add_users_query(conn, insert_user)
+
+def add_users_query_2(connection, user_data):
+    """Lisame userit, mis on eralid sisestatud"""
+    query="INSERT INTO users(name,age,gender,nationality) VALUES(?,?,?,?)"
+    cursor=connection.cursor()
+    cursor.execute(query, user_data)
+    connection.commit()
+
+insert_user=(input("Nimi: "),int(input("Vanus: ")), input("Sugu: "), input("Riik: "))
+print(insert_user)
+add_users_query_2(conn, insert_user)
