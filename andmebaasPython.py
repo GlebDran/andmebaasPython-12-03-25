@@ -76,3 +76,21 @@ def add_users_query_2(connection, user_data):
 insert_user=(input("Nimi: "),int(input("Vanus: ")), input("Sugu: "), input("Riik: "))
 print(insert_user)
 add_users_query_2(conn, insert_user)
+
+def delete_data_from_tabel(connection, query):
+    try:
+        cursor = connection.cursor()
+        cursor.execute(query)
+        connection.commit()
+        print("Andmed on kustutatud")
+    except Error as e:
+        print(f"Viga'{e}' andmete kustutamisega")
+
+print("Andmete kustutame tabelist 'users'")
+delete_data_from_users="DELETE FROM users WHERE age<30"
+delete_data_from_tabel(conn,delete_data_from_users)
+print("Tabelis 'users' on jäänud neid kes vanem kui 30:")
+users = execute_read_query(conn, select_users)
+
+for users in users:
+    print(user)
